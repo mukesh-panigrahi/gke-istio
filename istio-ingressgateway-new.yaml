@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: istio-ingressgateway
+    istio: ingressgateway-new
+    # k8s-app: istio
+    # kubernetes.io/cluster-service: "true"
+    # release: istio
+  name: istio-ingressgateway-new
+  namespace: istio-system
+spec:
+  externalTrafficPolicy: Cluster
+  loadBalancerIP: 35.232.64.20  ## Should have the reserved Regional-IP created by terraform. 
+  ports:
+  - name: http2
+    nodePort: 30954
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 32451
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: tcp
+    nodePort: 32389
+    port: 31400
+    protocol: TCP
+    targetPort: 31400
+  - name: tcp-pilot-grpc-tls
+    nodePort: 31396
+    port: 15011
+    protocol: TCP
+    targetPort: 15011
+  - name: tcp-citadel-grpc-tls
+    nodePort: 31425
+    port: 8060
+    protocol: TCP
+    targetPort: 8060
+  - name: tcp-dns-tls
+    nodePort: 31566
+    port: 853
+    protocol: TCP
+    targetPort: 853
+  - name: http2-prometheus
+    nodePort: 31677
+    port: 15030
+    protocol: TCP
+    targetPort: 15030
+  - name: http2-grafana
+    nodePort: 31153
+    port: 15031
+    protocol: TCP
+    targetPort: 15031
+  selector:
+    app: istio-ingressgateway
+    istio: ingressgateway-new
+  sessionAffinity: None
+  type: LoadBalancer
