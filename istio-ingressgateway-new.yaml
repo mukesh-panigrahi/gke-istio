@@ -4,7 +4,7 @@ metadata:
   labels:
     app: istio-ingressgateway
     istio: ingressgateway-new
-    # k8s-app: istio
+    k8s-app: istio
     # kubernetes.io/cluster-service: "true"
     # release: istio
   name: istio-ingressgateway-new
