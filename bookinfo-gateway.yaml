@@ -8,7 +8,7 @@ spec:
     istio: ingressgateway # how to decide for our version of istio-gateway(NLB)
   servers:
   - hosts:
-    - '*'
+    - 35.232.64.20
     port:
       name: http
       number: 80
