@@ -8,7 +8,7 @@ metadata:
     istio: ingressgateway
     k8s-app: istio 
     # kubernetes.io/cluster-service: "true" 
-    # release: istio 
+    release: istio 
   name: istio-ingressgateway-new
   namespace: istio-system
 spec:
